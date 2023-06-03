@@ -1,0 +1,14 @@
+
+ul{
+    list-style: none;
+    orientation: landscape;
+}
+
+li{
+    display: inline;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bolder;
+    letter-spacing: 0.08em;
+    margin: 0 20px;
+    color: #919191;
+}
