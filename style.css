@@ -1,14 +1,32 @@
 
 ul{
-    list-style: none;
-    orientation: landscape;
+    text-align: center;
+    padding: 0%;
 }
 
+
 li{
-    display: inline;
-    font-family: 'Poppins',sans-serif;
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    align-content: center;
     font-weight: bolder;
-    letter-spacing: 0.08em;
-    margin: 0 20px;
-    color: #919191;
+    font-size: 1.2em;
+    color: #656565;
+    margin: 10% 10% 0 0;
+    letter-spacing: 0.5em;
+}
+
+li input{
+    display: block;
+    margin: 10%;
+}
+
+.centeredItems{
+   justify-content: center;
+
+}
+
+body{
+
+
 }
