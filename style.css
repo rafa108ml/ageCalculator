@@ -1,32 +1,60 @@
 
-ul{
-    text-align: center;
+.inputsList{
+    display: inline;
+    text-align: left;
     padding: 0%;
 }
 
 
-li{
+#inList li{
     display: inline-block;
     font-family: "Poppins", sans-serif;
-    align-content: center;
     font-weight: bolder;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #656565;
-    margin: 10% 10% 0 0;
+    margin-top: 8%;
     letter-spacing: 0.5em;
+    width: 15%;
 }
 
-li input{
-    display: block;
-    margin: 10%;
+#inList input{
+    width: 80%;
+    margin-top: 5%;
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-radius: 0.2em;
+    padding: 1%;
+    
 }
 
 .centeredItems{
-   justify-content: center;
-
+   text-align: center;
 }
 
 body{
 
+   
+}
 
+#outList li{
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    font-style: italic;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3em;
+    color: #171717;
+    width: 60%;
+}
+
+.dashesStyle{
+    color: rgb(101, 0, 172);
+    display: inline;
+}
+
+.bigLetters{
+    display: inline;
 }
