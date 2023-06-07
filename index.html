@@ -19,28 +19,31 @@
             <ul class="inputsList" id="inList">
                 <li>DAY
                     <input type="number" max="2" placeholder="DD" id="inputDay">
+                    <label class="warningMessage" id="dayLabel" >Info erronea</label>
                 </li>
 
                 <li>MONTH
                     <input type="number" max="2" placeholder="MM" id="inputMonth">
+                    <label class="warningMessage" id="monthLabel" >Info erronea</label>
                 </li>
                 
                 <li>YEAR
                     <input type="number" max="4" placeholder="YYYYY" id="inputYear">
+                    <label class="warningMessage" id="yearLabel" >Info erronea</label>
                 </li>
             </ul>
 
         </div>
         <!--imagen de la flecha-->
         <div class="imageContainer">
-            <img id="arrowDown" src="arrowdown.png" >
+            <img id="arrowDown" src="arrowdown2.png" >
 
         </div>
 
         <div class="centeredItems">
             <ul class="outputList" id="outList">
                 <li>
-                    <h1 id="dashes1" class="dashesStyle">
+                    <h1 id="dashesYears" class="dashesStyle">
                         --
                     </h1>
                     <h2 id="years" class="bigLetters">    
@@ -49,7 +52,7 @@
                 </li>
 
                 <li>
-                    <h1 id="dashes2" class="dashesStyle">
+                    <h1 id="dashesMonths" class="dashesStyle">
                         --
                     </h1>
                     <h2 id="months" class="bigLetters">    
@@ -58,7 +61,7 @@
                 </li>
 
                 <li>
-                    <h1 id="dashes3" class="dashesStyle">
+                    <h1 id="dashesDays" class="dashesStyle">
                         --
                     </h1>
                     <h2 id="days" class="bigLetters">    
@@ -86,7 +89,9 @@
 <script>
 
     var pageBody=document.body;
-    
+    var dayLabel=document.getElementById("dayLabel");
+    var monthLabel=document.getElementById("monthLabel");
+    var yearLabel=document.getElementById("yearLabel");
 
     //campos de texto inputs
     var inputDay= document.getElementById("inputDay");
@@ -107,9 +112,9 @@
     };
 
     //variables de texto outputs (dashes)
-    var outputDay =document.getElementById("dashes1");
-    var outputDay =document.getElementById("dashes2");
-    var outputDay =document.getElementById("dashes3");
+    var outputDay =document.getElementById("dashesDays");
+    var outputMonth =document.getElementById("dashesMonths");
+    var outputYear =document.getElementById("dashesYears");
 
     //variable de la imagen del arrow
     var imagenArrow = document.getElementById("arrowDown");
@@ -120,9 +125,18 @@
     var mes=0;
     var anho=0;
 
-    function throwAge() {
-        outputDay.innerText=2;
-        //imagenArrow.style.display="none";
+    function throwAge(daysPast) {
+        
+        totalYears=(daysPast/365.24);
+        totalMonths=((totalYears-Math.floor(totalYears))*12);
+        totalDays=((totalMonths-Math.floor(totalMonths))*30.46666666);
+        console.log(totalYears);
+        console.log(totalMonths);
+        console.log(totalDays);
+
+        outputDay.innerText=Math.floor(totalDays);
+        outputMonth.innerText=Math.floor(totalMonths);
+        outputYear.innerText=Math.round(totalYears);
     }
 
     function checkAmount(limit, input, max){
@@ -133,31 +147,68 @@
         if(input.value>max){
             input.focus;
             input.classList.add("wrongData");
+            
+            if(input==inputDay){
+                dayLabel.style.visibility="visible";
+            }
+            else if(input==inputMonth){
+                monthLabel.style.visibility="visible";
+            }
+            else if(input==inputYear){
+                yearLabel.style.visibility="visible";
+            }
+            
         }
         else if(input.value<max){
             input.classList.remove("wrongData");
+            
+            if(input==inputDay){
+                dayLabel.style.visibility="hidden";
+            }
+            else if(input==inputMonth){
+                monthLabel.style.visibility="hidden";
+            }
+            else if(input==inputYear){
+                yearLabel.style.visibility="hidden";
+            }
             
         }
         
     }
 
     function getDaysPast(){
+        console.log("oe");
         var bornDay=inputDay.value;
-        var bornMonth=inputMonth.value;
+        //toco restar uno al month por que js considera Enero como el mes 0
+        var bornMonth=parseInt(inputMonth.value)-1;
         var bornYear=inputYear.value;
+        var allInfo=true;
 
-        var bornDate=bornDay.toString();
-        bornDate=bornDate+"/";
-        bornDate=bornDate+bornMonth.toString();
-        bornDate=bornDate+"/";
-        bornDate=bornDate+bornYear.toString();
+        if(inputDay.value==0){
+            dayLabel.style.visibility="visible";
+            allInfo=false;
+        }
+        if(inputMonth.value==0){
+            monthLabel.style.visibility="visible";
+            allInfo=false;
+        }
+        if(inputYear.value==0){
+            yearLabel.style.visibility="visible";
+            allInfo=false;
+        }
+        if(!allInfo){
+            return;
+        }
+        console.log("oe");
+        
 
-        var fecha1 = new Date(bornDate);
+        var fecha1 = new Date(bornYear,bornMonth,bornDay);
         var fecha2 = new Date();
 
-        let resta = fecha2.getTime() - fecha1.getTime();
-        console.log(bornDate);
-        console.log(Math.round(resta/ (1000*60*60*24)));
+        var resta = fecha2.getTime() - fecha1.getTime();
+        var daysPast=((resta/ (1000*60*60*24)));
+        var monthsPast=((resta/ (1000*60*60*24)));
+        throwAge(daysPast);
     }
 
 

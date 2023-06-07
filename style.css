@@ -27,7 +27,7 @@
     box-sizing: border-box;
     border-width: 1px;
     border-radius: 0.2em;
-    padding: 1%;
+    padding: 3%;
     
 }
 /* esto generaba conflicto con la aplicacion de la clase wrongData al cambairla por info mala   
@@ -38,8 +38,16 @@
 .wrongData{
     outline-color: #ff0000;
     color: red;
-    
-    
+}
+
+.warningMessage{
+    display: inline-block;
+    font-family:sans-serif;
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: normal;
+    color: #ff0000;
+    visibility: hidden;
 }
 
 .centeredItems{
