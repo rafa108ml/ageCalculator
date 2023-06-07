@@ -11,13 +11,14 @@
     font-family: "Poppins", sans-serif;
     font-weight: bolder;
     font-size: 1.1em;
-    color: #656565;
-    margin-top: 8%;
+    color: #878787;
+    margin-top: 7%;
     letter-spacing: 0.5em;
     width: 15%;
 }
 
 #inList input{
+    border: 0;
     width: 80%;
     margin-top: 5%;
     font-size: 30px;
@@ -27,6 +28,17 @@
     border-width: 1px;
     border-radius: 0.2em;
     padding: 1%;
+    
+}
+/* esto generaba conflicto con la aplicacion de la clase wrongData al cambairla por info mala   
+#inList input:focus input{
+    outline-color: #aeaeae;
+}
+*/
+.wrongData{
+    outline-color: #ff0000;
+    color: red;
+    
     
 }
 
@@ -39,22 +51,44 @@ body{
    
 }
 
+.outputList{
+    width: 60%;
+    margin-left: 27%;
+    margin-right: 20%;
+    padding: 0%;
+
+}
+
 #outList li{
-    display: inline-block;
+    display: block;
+    block-size: 1.9em;
     font-family: "Poppins", sans-serif;
     font-style: italic;
-    text-align: center;
+    text-align: left;
     font-weight: bolder;
     font-size: 3em;
     color: #171717;
-    width: 60%;
+    width: fit-content;
 }
 
 .dashesStyle{
-    color: rgb(101, 0, 172);
+    color: rgb(149, 66, 244);
     display: inline;
+    font-size: 1.5em;
 }
 
 .bigLetters{
     display: inline;
 }
+
+.imageContainer{
+    margin-left: 70%;
+    margin-block-start: 3%;
+}
+
+#arrowDown{
+    size: 1em;
+    height: 6em;
+}
+
+

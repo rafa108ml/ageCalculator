@@ -18,17 +18,22 @@
         <div class="centeredItems">
             <ul class="inputsList" id="inList">
                 <li>DAY
-                    <input type="text">
+                    <input type="number" max="2" placeholder="DD" id="inputDay">
                 </li>
 
                 <li>MONTH
-                    <input type="text">
+                    <input type="number" max="2" placeholder="MM" id="inputMonth">
                 </li>
                 
                 <li>YEAR
-                    <input type="text">
+                    <input type="number" max="4" placeholder="YYYYY" id="inputYear">
                 </li>
             </ul>
+
+        </div>
+        <!--imagen de la flecha-->
+        <div class="imageContainer">
+            <img id="arrowDown" src="arrowdown.png" >
 
         </div>
 
@@ -77,3 +82,83 @@
 
 
 </html>
+
+<script>
+
+    var pageBody=document.body;
+    
+
+    //campos de texto inputs
+    var inputDay= document.getElementById("inputDay");
+    var inputMonth= document.getElementById("inputMonth");
+    var inputYear= document.getElementById("inputYear");
+
+    //la unica forma de llamar una funcion con parametros en este metodo es encapsulandola en una funcion anonima
+    inputDay.oninput=function(){
+        checkAmount(2, this, 31);
+    };
+
+    inputMonth.oninput=function(){
+        checkAmount(2, this, 12);
+    };
+
+    inputYear.oninput=function(){
+        checkAmount(4, this, 2022);
+    };
+
+    //variables de texto outputs (dashes)
+    var outputDay =document.getElementById("dashes1");
+    var outputDay =document.getElementById("dashes2");
+    var outputDay =document.getElementById("dashes3");
+
+    //variable de la imagen del arrow
+    var imagenArrow = document.getElementById("arrowDown");
+    imagenArrow.onclick=getDaysPast;
+
+    //variables que toman la fecha
+    var dia=0;
+    var mes=0;
+    var anho=0;
+
+    function throwAge() {
+        outputDay.innerText=2;
+        //imagenArrow.style.display="none";
+    }
+
+    function checkAmount(limit, input, max){
+        if(input.value.length>limit){
+            input.value=input.value.slice(0,limit);
+        }
+        
+        if(input.value>max){
+            input.focus;
+            input.classList.add("wrongData");
+        }
+        else if(input.value<max){
+            input.classList.remove("wrongData");
+            
+        }
+        
+    }
+
+    function getDaysPast(){
+        var bornDay=inputDay.value;
+        var bornMonth=inputMonth.value;
+        var bornYear=inputYear.value;
+
+        var bornDate=bornDay.toString();
+        bornDate=bornDate+"/";
+        bornDate=bornDate+bornMonth.toString();
+        bornDate=bornDate+"/";
+        bornDate=bornDate+bornYear.toString();
+
+        var fecha1 = new Date(bornDate);
+        var fecha2 = new Date();
+
+        let resta = fecha2.getTime() - fecha1.getTime();
+        console.log(bornDate);
+        console.log(Math.round(resta/ (1000*60*60*24)));
+    }
+
+
+</script>
