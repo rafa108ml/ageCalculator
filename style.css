@@ -54,10 +54,6 @@
    text-align: center;
 }
 
-body{
-
-   
-}
 
 .outputList{
     width: 60%;
@@ -99,4 +95,46 @@ body{
     height: 6em;
 }
 
+/*responsive */
+@media (max-width:780px){ 
 
+
+    .outputList{
+            width: 100%;
+            margin: 0;
+            padding: 0%;
+        
+    }
+
+    #outList li{
+            width: 100%;
+            font-size: 2.2em;
+        }
+
+    #inList li{
+        width: 30%;
+        margin-right: 1%;
+        font-size: 1em;
+        
+    }
+
+    #inList input{
+        font-size: 1.5em;
+        margin-top: 5%;
+        width: 110%;
+    }
+
+    .imageContainer{
+        text-align: center;
+        margin: 0;
+    }
+
+    #arrowDown{
+        height: 5em;
+        margin: 2%;
+    }
+
+    .centeredItems{
+        margin-left: 5%;
+    }
+}
